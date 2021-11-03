@@ -6,11 +6,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     return (
         <>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1 }} sx={{ mb: 5 }}>
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton
@@ -23,8 +24,10 @@ const Navigation = () => {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Doctors lap
+                            Doctors lab
                         </Typography>
+                        <Link sx={{ color: 'secondary.main', bgcolor: 'primary.main' }} to="/appointment">Appointment
+                        </Link>
                         <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
