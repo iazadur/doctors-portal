@@ -6,7 +6,7 @@ import login from '../../../images/login.png'
 
 const Login = () => {
     const [loginData, setLoginData] = useState({})
-    const { loginUser, isLoading, user, authError } = useAuth()
+    const { loginUser, isLoading, user, authError, signInWithGoogle } = useAuth()
     const location = useLocation();
     const history = useHistory();
     const handleOnChange = (e) => {
@@ -21,6 +21,10 @@ const Login = () => {
     const handleLogin = (e) => {
         loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault();
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history)
     }
     return (
         <>
@@ -48,10 +52,12 @@ const Login = () => {
                             <NavLink to="/register" style={{ textDecoration: "none" }}>
                                 <Button variant="text">New User? Please register</Button>
                             </NavLink>
+                            {isLoading && <CircularProgress disableShrink />}
+                            {user?.email && <Alert severity="success">User Created Successfully!</Alert>}
+                            {authError && <Alert severity="error">{authError}</Alert>}
                         </form>
-                        {isLoading && <CircularProgress disableShrink />}
-                        {user?.email && <Alert severity="success">User Created Successfully!</Alert>}
-                        {authError && <Alert severity="error">{authError}</Alert>}
+                        <p>----------or------------</p>
+                        <Button onClick={handleGoogleSignIn} sx={{ width: "100%", m: 1,backgroundColor:"#E551A8" }} variant="contained">Google Sign In</Button>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <img src={login} style={{ width: '100%' }} alt="" />

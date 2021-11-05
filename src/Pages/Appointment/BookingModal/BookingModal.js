@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fade, Modal, Box, Backdrop, TextField, Button, Typography } from '@mui/material';
+import useAuth from '../../../Hooks/useAuth';
 
 const style = {
     position: 'absolute',
@@ -19,8 +20,9 @@ const style = {
 const BookingModal = ({ openBooking, handleBookingClose, booking, date }) => {
 
     const { name, time } = booking
+    const {user} = useAuth()
 
-    const handleBookingSubmit = e =>{
+    const handleBookingSubmit = e => {
         alert('book submitted')
         e.preventDefault()
         handleBookingClose()
@@ -61,13 +63,14 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date }) => {
                             <TextField
                                 sx={{ width: '90%', m: 1 }}
                                 id="outlined-size-small"
-                                placeholder="Your Name"
+                                defaultValue={user?.displayName}
                                 size="small"
                             />
                             <TextField
                                 sx={{ width: '90%', m: 1 }}
                                 id="outlined-size-small"
                                 placeholder="Your Email"
+                                defaultValue={user?.email}
                                 size="small"
                             />
                             <TextField
