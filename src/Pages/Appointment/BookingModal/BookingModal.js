@@ -53,7 +53,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date }) => {
                 if (response.data.insertedId) {
                     swal({
                         title: "Good job!",
-                        text: "You clicked the button!",
+                        text: "Successfully added an Appointment!",
                         icon: "success",
                         buttons: false,
                         timer: 1500,
