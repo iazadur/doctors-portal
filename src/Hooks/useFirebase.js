@@ -99,7 +99,7 @@ const useFirebase = () => {
                 setUser(user)
                 getIdToken(user)
                     .then(idToken => {
-                        console.log(idToken);
+                        setToken(idToken);
                     })
             } else {
                 setUser({})
@@ -166,6 +166,7 @@ const useFirebase = () => {
     return {
         user,
         admin,
+        token,
         registerUser,
         loginUser,
         logout,
