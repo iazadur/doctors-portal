@@ -22,7 +22,7 @@ const OurDoctors = () => {
     return (
         <>
             <Container sx={{ my: 12 }}>
-                <Typography variant="h4" sx={{ fontWeight: 600, color: "#5FC7C7" }}>OurDoctors</Typography>
+                <Typography variant="h4" sx={{ fontWeight: 600, color: "#5FC7C7", my: 3 }}>Our Doctors</Typography>
                 <Grid container >
                     {Array.from({ length: 3 }).map((_, idx) => (
                         <Grid item xs={12} sm={12} md={4}>

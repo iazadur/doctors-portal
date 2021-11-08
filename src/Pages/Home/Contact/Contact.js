@@ -31,7 +31,7 @@ const Contact = () => {
         <div className={root}>
             <div>
                 <Container>
-                    <Typography variant="h6" color="#1903AE">Contact us</Typography>
+                    <Typography variant="h6" color="#5FC7C7">Contact us</Typography>
                     <Typography variant="h4" color="#fff">Always contact with us</Typography>
                     <TextField
                         fullWidth
