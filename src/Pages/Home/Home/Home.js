@@ -4,6 +4,8 @@ import AppoinmentBanner from '../AppoinmentBanner/AppoinmentBanner';
 import Banner from '../Banner/Banner';
 import InfoCard from './../InfoCard/InfoCard'
 import Services from '../Services/Services';
+import Contact from '../Contact/Contact';
+import Footer from '../Footer/Footer';
 
 const Home = () => {
     return (
@@ -13,6 +15,8 @@ const Home = () => {
             <InfoCard />
             <Services />
             <AppoinmentBanner />
+            <Contact />
+            <Footer />
         </>
     );
 };
