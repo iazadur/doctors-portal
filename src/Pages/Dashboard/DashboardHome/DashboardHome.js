@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import Calendar from '../../Shared/Calendar/Calendar';
 import Appointments from '../Appointments/Appointments';
 
 
 const DashboardHome = () => {
-    const [date, setDate] = React.useState(new Date());
+    const [date, setDate] = useState(new Date());
     return (
         <>
             <Grid container spacing={2}>

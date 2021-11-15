@@ -16,8 +16,6 @@ const Login = () => {
         newLoginData[field] = value
         setLoginData(newLoginData)
     }
-    console.log(loginData);
-    console.log(user);
     const handleLogin = (e) => {
         loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault();

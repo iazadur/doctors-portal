@@ -2,8 +2,8 @@ import { Grid, Paper, Typography, Button } from '@mui/material';
 import React from 'react';
 import BookingModal from '../BookingModal/BookingModal';
 
-const Booking = ({ booking,date }) => {
-    const { name, time, space } = booking
+const Booking = ({ booking, date }) => {
+    const { name, time, space, price } = booking
     const [openBooking, setBookingOpen] = React.useState(false);
     const handleBookingOpen = () => setBookingOpen(true);
     const handleBookingClose = () => setBookingOpen(false);
@@ -17,13 +17,16 @@ const Booking = ({ booking,date }) => {
                     <Typography variant="h6" gutterBottom component='div'>
                         {time}
                     </Typography>
+                    <Typography variant="" gutterBottom component='div'>
+                       Price ${price}
+                    </Typography>
                     <Typography variant="caption" gutterBottom component='div'>
                         {space} SPACES AVAILABLE
                     </Typography>
                     <Button onClick={handleBookingOpen} variant="contained">BOOK APPOINTMENT</Button>
                 </Paper>
             </Grid>
-            <BookingModal handleBookingClose={handleBookingClose} openBooking={openBooking} booking={booking} date={date}/>
+            <BookingModal handleBookingClose={handleBookingClose} openBooking={openBooking} booking={booking} date={date} />
         </>
     );
 };

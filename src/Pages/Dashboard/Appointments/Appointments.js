@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import useAuth from '../../../Hooks/useAuth';
@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { NavLink } from 'react-router-dom';
 
 const Appointments = ({ date }) => {
   const { user, token } = useAuth()
@@ -33,6 +34,7 @@ const Appointments = ({ date }) => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
+              <TableCell align="right">Price</TableCell>
               <TableCell align="right">Time</TableCell>
               <TableCell align="right">Service</TableCell>
               <TableCell align="right">Action</TableCell>
@@ -47,9 +49,10 @@ const Appointments = ({ date }) => {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
+                <TableCell align="right">$ {row.price}</TableCell>
                 <TableCell align="right">{row.time}</TableCell>
                 <TableCell align="right">{row.serviceName}</TableCell>
-                <TableCell align="right"></TableCell>
+                <TableCell align="right">{row.payment ? "Paid" : <NavLink to={`/dashboard/payment/${row._id}`}><Button>Pay</Button></NavLink>}</TableCell>
               </TableRow>
             ))}
           </TableBody>
