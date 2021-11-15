@@ -14,7 +14,7 @@ import { NavLink } from 'react-router-dom';
 const Appointments = ({ date }) => {
   const { user, token } = useAuth()
   const [appointments, setAppointmets] = useState([])
-  const url = `http://localhost:5000/appointments?email=${user?.email}&date=${date}`
+  const url = `http://localhost:5000/appointments?email=${user?.email}&date=${date.toLocaleDateString()}`
   useEffect(() => {
     axios.get(url, { authorization: `Bearer ${token}` })
       .then((res) => {
