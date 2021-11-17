@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import CheckOutFrom from './CheckOutFrom';
-import {  Elements } from '@stripe/react-stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
 
 
@@ -12,7 +12,7 @@ const Payment = () => {
     const { appointmentId } = useParams()
     const [appointment, setAppointment] = useState({})
     useEffect(() => {
-        axios.get(`http://localhost:5000/appointments/${appointmentId}`)
+        axios.get(`https://limitless-forest-77951.herokuapp.com/appointments/${appointmentId}`)
             .then(res => setAppointment(res.data))
     }, [appointmentId])
     return (

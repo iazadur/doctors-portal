@@ -1,7 +1,7 @@
 import './App.css';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
@@ -11,6 +11,11 @@ import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
+import AdminRoute from './Pages/Login/AdminRoute/AdminRoute';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
+import AddDoctor from './Pages/Dashboard/AddDoctor/AddDoctor';
+import Payment from './Pages/Dashboard/Payment/Payment';
 
 
 function App() {
@@ -18,26 +23,35 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Router>
-          <Switch>
-            <PrivateRoute path="/appointment">
-              <Appointment />
-            </PrivateRoute>
-            <PrivateRoute path="/dashboard">
-              <Dashboard />
-            </PrivateRoute>
-            <Route path="/login">
-              <Login />
+          <Routes>
+            <Route  path="/appointment" element={<PrivateRoute><Appointment /></PrivateRoute>} >
+              
             </Route>
-            <Route path="/register">
-              <Register />
+            <Route  path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} >
+            <Route exact path='/dashboard' element={<DashboardHome />}></Route>
+
+
+<Route path={`/dashboard/payment/:appointmentId`} element={<Payment />} ></Route>
+<Route path={`/dashboard/makeAdmin`} element={<AdminRoute><MakeAdmin /></AdminRoute>}>
+
+</Route>
+<Route path={`/dashboard/addDoctor`} element={<AdminRoute><AddDoctor /></AdminRoute>}>
+
+</Route>
             </Route>
-            <Route path="/home">
-              <Home />
+            <Route  path="/login" element={<Login />} >
+              
             </Route>
-            <Route exact path="/">
-              <Home />
+            <Route  path="/register" element={<Register />} >
+              
             </Route>
-          </Switch>
+            <Route  path="/home" element={<Home />} >
+              
+            </Route>
+            <Route exact  path="/" element={<Home />} >
+              
+            </Route>
+          </Routes>
         </Router>
       </AuthProvider>
     </div>

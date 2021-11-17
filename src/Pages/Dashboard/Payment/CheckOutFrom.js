@@ -19,7 +19,7 @@ const CheckOutFrom = ({ appointment }) => {
     const [processing, setProcessing] = useState(false)
     const [clientSecret, setClientSectret] = useState('')
     useEffect(() => {
-        axios.post('http://localhost:5000/create-payment-intent', { price: price })
+        axios.post('https://limitless-forest-77951.herokuapp.com/create-payment-intent', { price: price })
             .then(res => setClientSectret(res.data.clientSecret))
     }, [price])
     console.log({ price: price });
@@ -81,7 +81,7 @@ const CheckOutFrom = ({ appointment }) => {
                 last4: paymentMethod.card.last4,
                 transaction: paymentIntent.client_secret.slice('_secret')[0]
             }
-            const url = `http://localhost:5000/appointments/${_id}`
+            const url = `https://limitless-forest-77951.herokuapp.com/appointments/${_id}`
             axios.put(url, payment)
                 .then(res => console.log(res.data))
         }

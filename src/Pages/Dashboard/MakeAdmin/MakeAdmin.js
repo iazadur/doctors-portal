@@ -14,7 +14,7 @@ const MakeAdmin = () => {
         const user = { email }
         user.authorization = `Bearer ${token}`
         console.log(user);
-        // fetch('http://localhost:5000/users/admin', {
+        // fetch('https://limitless-forest-77951.herokuapp.com/users/admin', {
         //     method: 'PUT',
         //     headers: {
         //         'authorization': `Bearer ${token}`,
@@ -22,7 +22,7 @@ const MakeAdmin = () => {
         //     },
         //     body:JSON.stringify(user)
         // })
-        axios.put('http://localhost:5000/users/admin', user)
+        axios.put('https://limitless-forest-77951.herokuapp.com/users/admin', user)
             .then((res) => {
                 if (res.data.modifiedCount) {
                     swal({

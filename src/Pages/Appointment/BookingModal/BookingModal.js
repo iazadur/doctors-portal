@@ -48,7 +48,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date }) => {
         }
         console.log(appointment);
         // send to the server
-        axios.post('http://localhost:5000/appointments', appointment)
+        axios.post('https://limitless-forest-77951.herokuapp.com/appointments', appointment)
             .then(function (response) {
                 console.log(response.data);
                 if (response.data.insertedId) {

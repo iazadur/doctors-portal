@@ -1,7 +1,7 @@
 import { Button, Container, Grid, TextField, Typography, CircularProgress, Alert } from '@mui/material';
 
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import login from '../../../images/login.png'
 
@@ -9,7 +9,7 @@ import login from '../../../images/login.png'
 const Register = () => {
     const [loginData, setLoginData] = useState({})
     const { registerUser, isLoading, user, authError } = useAuth()
-    const history = useHistory();
+    const navigate = useNavigate();
     const handleOnBlur = (e) => {
         const field = e.target.name
         const value = e.target.value
@@ -22,7 +22,7 @@ const Register = () => {
         if (loginData.password !== loginData.password2) {
             return alert("Your password didn't match")
         }
-        registerUser(loginData.email, loginData.password, loginData.name, history)
+        registerUser(loginData.email, loginData.password, loginData.name, navigate)
         e.preventDefault();
     }
     return (
@@ -63,7 +63,7 @@ const Register = () => {
                                 name="password2"
                                 onBlur={handleOnBlur}
                                 variant="standard" />
-                            <Button type="submit" sx={{ width: "50%", m: 1 }} variant="contained">Registration</Button>
+                            <Button type="submit" sx={{ width: "50%", m: 1 }} variant="contained">Registration</Button> <br/>
                             <NavLink to="/login" style={{ textDecoration: "none" }}>
                                 <Button variant="text">Already Register? Please Login</Button>
                             </NavLink>

@@ -21,7 +21,7 @@ const useFirebase = () => {
 
 
     //  Create New User with email & Password
-    const registerUser = (email, password, name, history) => {
+    const registerUser = (email, password, name, navigate) => {
         setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -40,7 +40,7 @@ const useFirebase = () => {
                 }).catch((error) => {
 
                 });
-                history.push('/')
+                navigate('/')
                 swal({
                     title: "Good job!",
                     text: "Successfully Created an Account!",
@@ -56,12 +56,12 @@ const useFirebase = () => {
     }
 
     // login User Wih email & password
-    const loginUser = (email, password, location, history) => {
+    const loginUser = (email, password, location, navigate) => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 const destination = location?.state?.from || '/'
-                history.replace(destination)
+                navigate(destination)
                 setAuthError('')
             })
             .catch((error) => {
@@ -73,13 +73,13 @@ const useFirebase = () => {
 
     // Google pop Up sign 
 
-    const signInWithGoogle = (location, history) => {
+    const signInWithGoogle = (location, navigate) => {
         setIsLoading(true)
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 setUser(result.user)
                 const destination = location?.state?.from || '/'
-                history.replace(destination)
+                navigate(destination)
 
                 // save user to the database
                 saveUser(result.user.email, result.user.displayName, 'put')
@@ -112,7 +112,7 @@ const useFirebase = () => {
 
     // check admin or normal user 
     useEffect(() => {
-        const url = `http://localhost:5000/users/${user.email}`
+        const url = `https://limitless-forest-77951.herokuapp.com/users/${user.email}`
         axios.get(url)
             .then(res => setAdmin(res.data.admin))
     }, [user.email])
@@ -131,7 +131,7 @@ const useFirebase = () => {
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName }
         if (method === 'post') {
-            axios.post('http://localhost:5000/users', user)
+            axios.post('https://limitless-forest-77951.herokuapp.com/users', user)
                 .then((res) => {
                     if (res.data.insertedId) {
                         swal({
@@ -145,7 +145,7 @@ const useFirebase = () => {
                 })
         }
         if (method === 'put') {
-            axios.put('http://localhost:5000/users', user)
+            axios.put('https://limitless-forest-77951.herokuapp.com/users', user)
                 .then((res) => {
                     if (res.data.upsertedId) {
                         swal({

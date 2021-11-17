@@ -1,6 +1,6 @@
 import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import login from '../../../images/login.png'
 
@@ -8,7 +8,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({})
     const { loginUser, isLoading, user, authError, signInWithGoogle } = useAuth()
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const handleOnChange = (e) => {
         const field = e.target.name
         const value = e.target.value
@@ -17,12 +17,12 @@ const Login = () => {
         setLoginData(newLoginData)
     }
     const handleLogin = (e) => {
-        loginUser(loginData.email, loginData.password, location, history)
+        loginUser(loginData.email, loginData.password, location, navigate)
         e.preventDefault();
     }
 
     const handleGoogleSignIn = () => {
-        signInWithGoogle(location, history)
+        signInWithGoogle(location, navigate)
     }
     return (
         <>
@@ -46,7 +46,7 @@ const Login = () => {
                                 name="password"
                                 onChange={handleOnChange}
                                 variant="standard" />
-                            <Button type="submit" sx={{ width: "50%", m: 1 }} variant="contained">Login</Button>
+                            <Button type="submit" sx={{ width: "50%", m: 1 }} variant="contained">Login</Button> <br/>
                             <NavLink to="/register" style={{ textDecoration: "none" }}>
                                 <Button variant="text">New User? Please register</Button>
                             </NavLink>
