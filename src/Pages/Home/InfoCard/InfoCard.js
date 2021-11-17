@@ -8,7 +8,7 @@ const InfoCard = () => {
             <Container style={{ marginTop: -100, marginBottom: 100 }}>
                 <Grid container spacing={3}>
                     {
-                        InfoCardData.map(({ Icon, desc, title, background }) => <Grid item xs={12} sm={12} md={4} >
+                        InfoCardData.map(({ id,Icon, desc, title, background }) => <Grid key={id} item xs={12} sm={12} md={4} >
                             <Paper style={{ background: background, color: 'white' }} sx={{ display: 'flex', justifyContent: "space-around", p: 2 }} variant="outlined">
                                 <Icon sx={{ fontSize: "60px" }} />
                                 <Box>
